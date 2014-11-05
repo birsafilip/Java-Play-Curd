@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 public class Product {
 private static List<Product> products;
+
+
 static {
 products = new ArrayList<Product>();
 products.add(new Product("1111111111111", "Paperclips 1",
@@ -17,9 +19,9 @@ products.add(new Product("4444444444444", "Paperclips 4",
 products.add(new Product("5555555555555", "Paperclips 5",
 "Paperclips description 5"));
 }
-
+@Constraints.Required
 public String ean;
-
+@Constraints.Required
 public String name;
 public String description;
 public Product() {

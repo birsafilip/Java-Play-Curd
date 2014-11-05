@@ -21,15 +21,27 @@ public class Products extends Controller{
 	}
 	
 	public static Result details(String ean){
-		return TODO;
+		final Product product=Product.findByEan(ean);
+		if(product==null){
+			return notFound(String.format("Product %s does not exist", ean));
+			
+		}
+		Form<Product>filledForm=productForm.fill(product);
+		return ok(details.render(filledForm));
 		
 	}
 	
 	public static Result save(){
 		Form<Product>boundForm=productForm.bindFromRequest(); /*bining from form*/
 		Product product=boundForm.get();
-		product.save();
-		return ok(String.format("Saved product %s", product));
+		if(boundForm.hasErrors()){
+			flash("error","pleace correct the form below");
+			return badRequest(details.render(boundForm));
+			
+		}
+		Product.save(product);
+		flash("success",String.format("Successfully added product %s", product));
+		return redirect(routes.Products.list());
 		
 	}
 	
