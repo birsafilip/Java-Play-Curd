@@ -1,4 +1,11 @@
-This is your new Play application
+Ovo je Crud backend aplikacija 
 =====================================
 
-This file will be packaged with your application, when using `play dist`.
+U izgradnji ove Aplikacije se koristi Java jezik i Scala za Templejte
+
+MVC aplikacija 
+MOdel koji koristimo je se naziva Product 
+a propracen je Products controllerom 
+Bootstrap je koriscen za stiliziranje 
+
+Metodom list prikazeujemo sve proizvode 
