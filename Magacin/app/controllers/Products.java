@@ -11,6 +11,14 @@ public class Products extends Controller{
 
 	public static final Form<Product>productForm=Form.form(Product.class);
 	
+		
+	
+	public static Result index(){
+		return redirect(routes.Products.list());
+		
+		
+	}
+	
 	public static Result list(){
 		List<Product>products=Product.findAll();
 		return ok(list.render(products));
@@ -39,7 +47,7 @@ public class Products extends Controller{
 			return badRequest(details.render(boundForm));
 			
 		}
-		Product.save(product);
+		product.save();
 		flash("success",String.format("Successfully added product %s", product));
 		return redirect(routes.Products.list());
 		
