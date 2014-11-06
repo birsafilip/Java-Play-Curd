@@ -9,7 +9,7 @@ GET		/							controllers.Products.index()
 GET 	/products/					controllers.Products.list()
 GET		/products/new				controllers.Products.newProduct()
 GET		/products/:ean				controllers.Products.details(ean:String)
-GET		/products/					controllers.Products.save()
+POST	/products/					controllers.Products.save()
 
 
 # Map static resources from the /public folder to the /assets URL path

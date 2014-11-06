@@ -2,17 +2,22 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import play.mvc.Http.*;
 import models.Product;
+
 import java.util.List;
 import java.util.ArrayList;
+
 import play.data.Form;
 import views.html.products.*;
 public class Products extends Controller{
 
 	public static final Form<Product>productForm=Form.form(Product.class);
-	
+	Context	ctx=Context.current();
+	Request request=ctx.request();
 		
 	
+
 	public static Result index(){
 		return redirect(routes.Products.list());
 		
