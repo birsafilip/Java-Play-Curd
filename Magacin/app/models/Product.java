@@ -2,7 +2,11 @@ package models;
 import play.data.validation.Constraints;
 import java.util.ArrayList;
 import java.util.List;
+import play.data.*;
+import java.util.*;
+import play.mvc.With;
 public class Product {
+	
 private static List<Product> products;
 
 
@@ -19,11 +23,15 @@ products.add(new Product("4444444444444", "Paperclips 4",
 products.add(new Product("5555555555555", "Paperclips 5",
 "Paperclips description 5"));
 }
+public List<Tag>tags=new LinkedList<Tag>();
+
 @Constraints.Required
 public String ean;
 @Constraints.Required
 public String name;
 public String description;
+
+
 public Product() {
 }
 public Product(String ean, String name, String description) {

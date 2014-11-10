@@ -3,7 +3,7 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import play.mvc.Http.*;
-import models.Product;
+import models.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -47,11 +47,19 @@ public class Products extends Controller{
 	public static Result save(){
 		Form<Product>boundForm=productForm.bindFromRequest(); /*bining from form*/
 		Product product=boundForm.get();
+		
 		if(boundForm.hasErrors()){
 			flash("error","pleace correct the form below");
 			return badRequest(details.render(boundForm));
 			
 		}
+		List<Tag> tags = new ArrayList<Tag>();
+		for (Tag tag : product.tags) {
+		if (tag.id != null) {
+		tags.add(Tag.findById(tag.id));
+		}
+		}
+		product.tags = tags;
 		product.save();
 		flash("success",String.format("Successfully added product %s", product));
 		return redirect(routes.Products.list());

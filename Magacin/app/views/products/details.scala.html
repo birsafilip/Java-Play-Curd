@@ -10,8 +10,18 @@
 @helper.inputText(productForm("ean"), '_label -> "EAN")
 @helper.inputText(productForm("name"),'_label -> "Name")
 @helper.textarea(productForm("description"), '_label -> "Description")
+<div class="control-group">
+<div class="controls">
+<input name="tags[0].id" value="1" type="checkbox">lightweight
+<input name="tags[1].id" value="2" type="checkbox">metal
+<input name="tags[2].id" value="3" type="checkbox">plastic
+</div>
+</div>
 </fieldset>
+
 <input type="submit" class="btn btn-primary" value="Save">
 <a class="btn" href="@routes.Products.index()">Cancel</a>
 }
+
+
 }
